@@ -1,4 +1,4 @@
-import { ApiConfig, FetchConfig, Method } from "./model";
+import { ApiConfig, FetchConfig, Method, RenderType } from "./model";
 import { storageGet } from "../storage";
 // import { StorageKey } from "../../../utils/storage-key";
 
@@ -14,7 +14,7 @@ const errorHandle = (status: number, msg: string) => {
   return false
 }
 
-export default async function fetchInstance(apiconfig: ApiConfig, method: Method): Promise<void> {
+export default async function fetchInstance(apiconfig: ApiConfig, method: Method, renderType?: RenderType): Promise<void> {
   const token = storageGet('token');
 
   const baseURL = !!apiconfig.baseConfig?.baseURL
@@ -33,6 +33,24 @@ export default async function fetchInstance(apiconfig: ApiConfig, method: Method
 
   if (!!apiconfig.body) {
     fetchConfig['body'] = JSON.stringify(apiconfig.body)
+  }
+
+  if (!!renderType) {
+    // app router setting
+    // SSG, cache: "force-cache",
+    // SSR, cache: "no-store",
+    // ISR, { revalidate: seconds }
+    switch (renderType) {
+      case 'ISR':
+        fetchConfig['next'] = { revalidate: 5 }
+        break;
+      case 'SSG':
+        fetchConfig['cache'] = "force-cache"
+        break;
+      case 'SSR':
+        fetchConfig['cache'] = "no-store"
+        break;
+    }
   }
 
   try {

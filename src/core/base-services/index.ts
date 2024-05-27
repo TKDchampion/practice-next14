@@ -19,9 +19,9 @@ export default class BaseServices {
   };
 }
 
-const getCall = (apiconfig: ApiConfig) => {
+const getCall = (apiconfig: ApiConfig): Promise<any> => {
   return new Promise((resolve, reject) => {
-    fetchInstance(apiconfig, 'GET')
+    fetchInstance(apiconfig, 'GET', apiconfig.renderType)
       .then(
         (response) => {
           resolve(response)
@@ -36,7 +36,7 @@ const getCall = (apiconfig: ApiConfig) => {
   })
 }
 
-const postCall = (apiconfig: ApiConfig) => {
+const postCall = (apiconfig: ApiConfig): Promise<any> => {
   return new Promise((resolve, reject) => {
     fetchInstance(apiconfig, 'POST').then(
       (response) => {
@@ -52,7 +52,7 @@ const postCall = (apiconfig: ApiConfig) => {
   })
 }
 
-const putCall = (apiconfig: ApiConfig) => {
+const putCall = (apiconfig: ApiConfig): Promise<any> => {
   return new Promise((resolve, reject) => {
     fetchInstance(apiconfig, 'PUT').then(
       (response) => {
@@ -68,7 +68,7 @@ const putCall = (apiconfig: ApiConfig) => {
   })
 }
 
-const deleteCall = (apiconfig: ApiConfig) => {
+const deleteCall = (apiconfig: ApiConfig): Promise<any> => {
   return new Promise((resolve, reject) => {
     fetchInstance(apiconfig, 'DELETE')
       .then(

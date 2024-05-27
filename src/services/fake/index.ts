@@ -6,10 +6,11 @@ const baseServices = new BaseServices();
 export const getServerSideFakeFtnRromise = () => {
     const config: ApiConfig = {
         baseConfig: {
-            baseURL: 'https://run.mocky.io/v3/bde86be9-d85f-4a71-a1ac-aaa21a426c65',
-            // baseURL: 'https://66504ac3ec9b4a4a60317b34.mockapi.io/contain',
+            // baseURL: 'https://run.mocky.io/v3/bde86be9-d85f-4a71-a1ac-aaa21a426c65',
+            baseURL: 'https://66504ac3ec9b4a4a60317b34.mockapi.io/contain',
         },
         url: '',
+        renderType: 'ISR'
     }
 
     return baseServices.get(config)
