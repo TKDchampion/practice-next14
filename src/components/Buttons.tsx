@@ -7,7 +7,7 @@ import {
   putServerSideFakeFtnRromise,
 } from "@/services/fake";
 
-const clickGetEvent = (e: any) => {
+const clickGetEvent = () => {
   getServerSideFakeFtnRromise().then(
     (resp) => {
       console.log(resp);
@@ -16,7 +16,7 @@ const clickGetEvent = (e: any) => {
   );
 };
 
-const clickPostEvent = (e: any) => {
+const clickPostEvent = () => {
   postServerSideFakeFtnRromise({
     userId: 11,
     id: 101,
@@ -30,7 +30,7 @@ const clickPostEvent = (e: any) => {
   );
 };
 
-const clickPutEvent = (e: any) => {
+const clickPutEvent = () => {
   putServerSideFakeFtnRromise(
     {
       userId: 11,
@@ -47,7 +47,7 @@ const clickPutEvent = (e: any) => {
   );
 };
 
-const clickDeleteEvent = (e: any) => {
+const clickDeleteEvent = () => {
   deleteServerSideFakeFtnRromise("1").then(
     (resp) => {
       console.log(resp);
@@ -59,10 +59,10 @@ const clickDeleteEvent = (e: any) => {
 export default function Buttons() {
   return (
     <main>
-      <button onClick={(e) => clickGetEvent(e)}>GET</button>
-      <button onClick={(e) => clickPostEvent(e)}>POST</button>
-      <button onClick={(e) => clickPutEvent(e)}>PUT</button>
-      <button onClick={(e) => clickDeleteEvent(e)}>DELETE</button>
+      <button onClick={clickGetEvent}>GET</button>
+      <button onClick={clickPostEvent}>POST</button>
+      <button onClick={clickPutEvent}>PUT</button>
+      <button onClick={clickDeleteEvent}>DELETE</button>
     </main>
   );
 }

@@ -1,4 +1,3 @@
-
 export interface ApiConfig {
   baseConfig?: BaseConfig;
   body?: Record<string, any>;
@@ -8,21 +7,21 @@ export interface ApiConfig {
 
 type RequestHeaders = {
   [key: string]: any;
-}
+};
 
 interface BaseConfig {
   headers?: RequestHeaders;
   baseURL?: string;
 }
 
-export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
+export type Method = "GET" | "POST" | "PUT" | "DELETE";
 
 export interface FetchConfig {
-  method: Method
-  headers: RequestHeaders
+  method: Method;
+  headers: RequestHeaders;
   body?: string;
   cache?: RequestCache;
-  next?: {}
+  next?: {};
 }
 
-export type RenderType = 'SSR' | 'SSG' | 'ISR'
+export type RenderType = "SSR" | "SSG" | "ISR";

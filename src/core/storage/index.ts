@@ -1,5 +1,5 @@
 export function storageGet(key: string, type = "localStorage") {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     if (type === "localStorage") {
       return JSON.parse(localStorage.getItem(key) as string);
     } else {

@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "lint": "next lint & npm run format"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
@@ -20,6 +22,9 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
     "typescript": "^5"
   }
 }
